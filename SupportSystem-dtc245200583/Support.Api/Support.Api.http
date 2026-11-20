@@ -1,0 +1,20 @@
+@Support.Api_HostAddress = http://localhost:8080
+@CustomerId = aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+
+### Create ticket
+POST {{Support.Api_HostAddress}}/api/v1/tickets
+Content-Type: application/json
+X-Demo-User: {{CustomerId}}
+
+{
+  "subject": "Cannot sign in",
+  "description": "The verification code is rejected.",
+  "priority": "Normal"
+}
+
+### List current user's tickets
+GET {{Support.Api_HostAddress}}/api/v1/tickets
+X-Demo-User: {{CustomerId}}
+
+### OpenAPI document
+GET {{Support.Api_HostAddress}}/openapi/v1.json
