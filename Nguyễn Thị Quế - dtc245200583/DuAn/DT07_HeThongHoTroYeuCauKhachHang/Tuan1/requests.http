@@ -1,0 +1,46 @@
+@SupportApi = http://localhost:5000
+@RequesterId = aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+@TicketId = replace-with-created-ticket-id
+
+### Health
+GET {{SupportApi}}/
+
+### List tickets
+GET {{SupportApi}}/tickets?page=1&pageSize=20
+
+### Create ticket
+POST {{SupportApi}}/tickets
+Content-Type: application/json
+
+{
+  "requesterId": "{{RequesterId}}",
+  "requesterName": "Nguyễn Thị Quế",
+  "subject": "Không đăng nhập được",
+  "description": "Mã xác thực bị từ chối khi tôi đăng nhập.",
+  "priority": "High"
+}
+
+### Read ticket
+GET {{SupportApi}}/tickets/{{TicketId}}
+
+### Filter tickets
+GET {{SupportApi}}/tickets?status=New&priority=High&q=đăng&page=1&pageSize=10
+
+### Tickets by requester
+GET {{SupportApi}}/users/{{RequesterId}}/tickets
+
+### Read ticket history
+GET {{SupportApi}}/tickets/{{TicketId}}/history
+
+### Change status; use the current ticket version
+PATCH {{SupportApi}}/tickets/{{TicketId}}/status
+Content-Type: application/json
+
+{
+  "status": "Assigned",
+  "expectedVersion": 1,
+  "reason": "Đã tiếp nhận xử lý."
+}
+
+### Not found example
+GET {{SupportApi}}/tickets/00000000-0000-0000-0000-000000000000
