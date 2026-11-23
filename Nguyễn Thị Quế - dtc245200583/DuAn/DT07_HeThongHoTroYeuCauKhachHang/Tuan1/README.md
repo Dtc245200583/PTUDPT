@@ -78,6 +78,8 @@ Cần .NET 8 SDK. Mở terminal tại thư mục Tuần 1 này:
 dotnet build SupportSystem.sln
 ~~~
 
+Project có global.json để chọn một SDK .NET 8 đã cài trên máy. Build sạch đã được xác nhận bằng .NET SDK 8.0.427: 0 warning, 0 error. Các thư mục bin và obj không đưa lên GitHub.
+
 Terminal 1 — chạy API:
 
 ~~~powershell
